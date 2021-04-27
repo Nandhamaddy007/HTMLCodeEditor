@@ -9,7 +9,12 @@ import CodeEditor from './CodeEditor'
 
 function App() {
   return (
-    <div className="App">        
+    <div className="App">    
+    <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HTML Editor</a>
+  </div>
+  </nav>    
     <Router>
       <Switch>
       <Route path="/CodeEditor">
@@ -24,5 +29,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
