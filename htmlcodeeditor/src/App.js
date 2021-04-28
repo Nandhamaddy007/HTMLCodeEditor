@@ -10,9 +10,9 @@ import CodeEditor from './CodeEditor'
 function App() {
   return (
     <div className="App">    
-    <nav class="navbar navbar-light  bg-dark ">
-  <div class="container-fluid">
-    <a class="navbar-brand text-light" href="#">HTMLPad</a>
+    <nav className="navbar navbar-light  bg-dark ">
+  <div className="container-fluid">
+    <div className="navbar-brand text-light" href="#">HTMLPad</div>
   </div>
   </nav>    
     <Router>

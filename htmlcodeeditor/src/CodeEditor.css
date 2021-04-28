@@ -2,7 +2,7 @@
 textarea {
   width:50%;
   /* float: top; */
-  min-height: 29em;
+  min-height: 28em;
   min-width:40%;
   overflow: scroll;
   margin-left: 20px;
@@ -14,10 +14,10 @@ textarea {
 }
 
 iframe {
-  width:25%;
+  width:30%;
   bottom: 0;
   margin-left: 20px;
-  height: 29em;
+  height: 28em;
 }
 
 .tab-align{
@@ -26,7 +26,7 @@ iframe {
   left:40px;
 }
 h5{
-  width:10%;
+  width:9%;
   margin-left: 0.5%;
   margin-right:33%;
 }
