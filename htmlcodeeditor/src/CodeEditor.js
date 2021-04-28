@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-
 import './CodeEditor.css'
 function CodeEditor(){
 const [htmlCode ,setHtmlCode]=useState(`<html>
@@ -7,49 +6,40 @@ const [htmlCode ,setHtmlCode]=useState(`<html>
 <h1>Hello world</h1>
 </body>
 </html>`);
-const [cssCode ,setcssCode]=useState();
+const [cssCode ,setcssCode]=useState('');
+const [activeTab, setActiveTab]=useState(1);
+
 useEffect(()=>{
 edit()
-},[htmlCode])
-//var code = document.getElementById("code").contentWindow.document;
-//  document.body.onkeyup=function(){
-// code.open();
-// code.writeln(htmlCode);
-// code.close();
-//  }
+//console.log(activeTab)
+},[htmlCode,activeTab,cssCode])
+
 return(
   <div id="main">  
-  <div className="tab-align">
-  <ul className="nav nav-tabs" id="myTab" role="tablist">
-  <li className="nav-item" role="presentation">
-    <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Html</button>
-  </li>
-  <li className="nav-item" role="presentation">
-    <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">CSS</button>
-  </li>
-</ul>
-  </div>
-  <div className="tab-content" id="myTabContent">
-  <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Home</div>
-  <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
-  </div>
-  <div className="row align-items-start">
-  
-  <textarea className="form-control col-md-6" id="editor" value={htmlCode} onChange={e=>changer(e)}></textarea>
+  <div className="btn btn-primary" onClick={()=>setActiveTab(1)}>Html</div>
+  <div className="btn btn-primary" onClick={()=>setActiveTab(2)}>CSS</div>   
+
+  <div className="row align-items-start">  
+ 
+  {activeTab===1?<textarea className="form-control col-md-6" id="htmleditor" value={htmlCode} onChange={
+    e=>setHtmlCode(e.target.value)    
+    }></textarea>:<textarea className="form-control col-md-6" id="csseditor" placeholder="Css editor" value={cssCode} onChange={
+    e=>setcssCode(e.target.value)
+    }></textarea>
+  }
   <iframe id="code" className="col-md-5" title="preview"></iframe>
   </div>
   </div>
 
 )
 
-function changer(e){      
-   setHtmlCode(e.target.value)    
-}
+
 
 function edit(){  
   var code = document.getElementById("code").contentWindow.document;    
+  var temp=`<style> ${cssCode}</style>`
     code.open();
-code.writeln(htmlCode);
+code.writeln(htmlCode+temp);
 code.close();
 
 }
