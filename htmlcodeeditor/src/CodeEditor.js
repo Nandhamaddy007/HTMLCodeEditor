@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+
 import './CodeEditor.css'
 function CodeEditor(){
 const [htmlCode ,setHtmlCode]=useState(`<html>
