@@ -10,6 +10,15 @@ const [cssCode ,setcssCode]=useState('');
 const [activeTab, setActiveTab]=useState(1);
 
 useEffect(()=>{
+  function edit(){  
+  var code = document.getElementById("code").contentWindow.document;    
+  var temp=`<style> ${cssCode}</style>`
+    code.open();
+code.writeln(htmlCode+temp);
+code.close();
+
+}
+
 edit()
 },[htmlCode,activeTab,cssCode])
 function downloadFile(){
@@ -52,14 +61,6 @@ return(
   </div>
 )
 
-function edit(){  
-  var code = document.getElementById("code").contentWindow.document;    
-  var temp=`<style> ${cssCode}</style>`
-    code.open();
-code.writeln(htmlCode+temp);
-code.close();
-
-}
 
 }
 export default CodeEditor;
